@@ -132,51 +132,29 @@ document.querySelectorAll(".gallery-item img, .product-card img").forEach((img) 
   img.style.transition = "opacity 0.3s ease"
 })
 
+// Add loading states for images
 document.querySelectorAll("img").forEach((img) => {
   let retryCount = 0
-  const maxRetries = 3
-
-  // Add loading placeholder
-  img.style.background = "#f0f0f0"
-  img.style.minHeight = "200px"
-  img.style.display = "flex"
-  img.style.alignItems = "center"
-  img.style.justifyContent = "center"
+  const maxRetries = 2
 
   function handleImageError() {
     retryCount++
-    console.log(`[v0] Image failed to load: ${img.src}, retry ${retryCount}`)
-
     if (retryCount <= maxRetries) {
-      // Retry loading the image with cache busting
+      // Retry loading the image
       setTimeout(() => {
-        const separator = img.src.includes("?") ? "&" : "?"
-        img.src = img.src.split("?")[0] + `${separator}retry=${retryCount}&t=${Date.now()}`
+        img.src = img.src + "?retry=" + retryCount
       }, 1000 * retryCount)
     } else {
       // Show placeholder after max retries
-      img.style.background = "#e2e8f0"
-      img.style.color = "#64748b"
-      img.style.fontSize = "14px"
-      img.style.fontWeight = "500"
-      img.innerHTML = "<span>Image Loading...</span>"
-      console.log(`[v0] Image failed after ${maxRetries} retries: ${img.src}`)
+      img.style.background = "#f0f0f0"
+      img.style.display = "flex"
+      img.style.alignItems = "center"
+      img.style.justifyContent = "center"
+      img.innerHTML = '<span style="color: #999; font-size: 14px;">Image unavailable</span>'
     }
   }
 
-  function handleImageLoad() {
-    console.log(`[v0] Image loaded successfully: ${img.src}`)
-    img.style.background = "transparent"
-    img.innerHTML = ""
-  }
-
   img.addEventListener("error", handleImageError)
-  img.addEventListener("load", handleImageLoad)
-
-  // Check if image is already loaded (cached)
-  if (img.complete && img.naturalHeight !== 0) {
-    handleImageLoad()
-  }
 })
 
 // Pricing hover effects
@@ -203,20 +181,7 @@ const totalSlides = slides.length
 function loadSlideBackground(slide) {
   const bgUrl = slide.dataset.bg
   if (bgUrl && !slide.style.backgroundImage) {
-    console.log(`[v0] Loading slide background: ${bgUrl}`)
-
-    // Create a new image to test loading
-    const testImg = new Image()
-    testImg.onload = () => {
-      slide.style.backgroundImage = `url('${bgUrl}')`
-      console.log(`[v0] Slide background loaded: ${bgUrl}`)
-    }
-    testImg.onerror = () => {
-      console.log(`[v0] Slide background failed: ${bgUrl}`)
-      // Use a fallback gradient background
-      slide.style.background = "linear-gradient(135deg, #1e293b 0%, #475569 100%)"
-    }
-    testImg.src = bgUrl
+    slide.style.backgroundImage = `url('${bgUrl}')`
   }
 }
 
