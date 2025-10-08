@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalma & Co Spa Resort - Authentic Swedish Massage Experience</title>
     <link rel="stylesheet" href="styles.css">
-    <base href="./">
+    <!-- Removed base tag to prevent unexpected URL resolution on GitHub Pages -->
     <!-- Optimized font loading with display=swap and preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Only preload the first hero image that's visible -->
-    <link rel="preload" as="image" href="images/spa-candles-woman.jpg">
+    <link rel="preload" as="image" href="./images/spa-candles-woman.jpg">
 </head>
 <body>
     <!-- Header -->
@@ -40,7 +40,7 @@
     <section class="hero">
         <div class="hero-slider">
             <!-- Added loading optimization for hero slides -->
-            <div class="slide active" style="background-image: url('images/spa-candles-woman.jpg');">
+            <div class="slide active" style="background-image: url('./images/spa-candles-woman.jpg');">
                 <div class="slide-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">Authentic Swedish Massage Experience</h2>
@@ -54,7 +54,7 @@
             </div>
             
             <!-- Lazy load non-active hero slides -->
-            <div class="slide" data-bg="images/massage-therapy.jpg">
+            <div class="slide" data-bg="./images/massage-therapy.jpg">
                 <div class="slide-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">Deep Tissue & Hot Stone Therapy</h2>
@@ -68,7 +68,7 @@
             </div>
             
             <!-- Updated third slide to use new high-quality luxury back massage image -->
-            <div class="slide" data-bg="images/hot-stone-spa-therapy.jpg">
+            <div class="slide" data-bg="./images/hot-stone-spa-therapy.jpg">
                 <div class="slide-overlay"></div>
                 <div class="hero-content">
                     <h2 class="hero-title">Hot Stone Spa Therapy</h2>
@@ -107,7 +107,7 @@
                 <div class="service-card">
                     <!-- Added image for Swedish Massage service -->
                     <div class="service-image">
-                        <img src="images/massage-therapy.jpg" alt="Swedish Massage and Deep Tissue" loading="lazy">
+                        <img src="./images/massage-therapy.jpg" alt="Swedish Massage and Deep Tissue" loading="lazy">
                     </div>
                     <h3>Swedish Massage + Deep Tissue</h3>
                     <p>Traditional long, flowing strokes combined with targeted deep tissue work to improve circulation, reduce muscle tension, and release chronic knots.</p>
@@ -131,7 +131,7 @@
                 <div class="service-card">
                     <!-- Added image for Hot Stone Massage service -->
                     <div class="service-image">
-                        <img src="images/hot-stone-spa-therapy.jpg" alt="Hot Stone Massage" loading="lazy">
+                        <img src="./images/hot-stone-spa-therapy.jpg" alt="Hot Stone Massage" loading="lazy">
                     </div>
                     <h3>Hot Stone Massage</h3>
                     <p>Heated volcanic stones combined with Swedish massage techniques to melt away tension and promote deep muscle relaxation and improved circulation.</p>
@@ -162,7 +162,7 @@
                 <div class="service-card">
                     <!-- Updated image for Cupping Therapy service -->
                     <div class="service-image">
-                        <img src="images/cupping-therapy-treatment.jpg" alt="Cupping Therapy and Massage" loading="lazy">
+                        <img src="./images/cupping-therapy-treatment.jpg" alt="Cupping Therapy and Massage" loading="lazy">
                     </div>
                     <h3>Cupping Therapy + Massage</h3>
                     <p>Ancient healing technique using suction cups on one zone of your choice, combined with therapeutic massage for the remaining session.</p>
@@ -192,7 +192,7 @@
                 <div class="service-card">
                     <!-- Updated image for Weight Loss service to show relaxing spa massage -->
                     <div class="service-image">
-                        <img src="images/relaxing-spa-massage.jpg" alt="Weight Loss and Massage" loading="lazy">
+                        <img src="./images/relaxing-spa-massage.jpg" alt="Weight Loss and Massage" loading="lazy">
                     </div>
                     <h3>Weight Loss + Massage</h3>
                     <p>Detoxifying treatment combined with therapeutic massage to boost metabolism, improve circulation, and promote natural weight loss.</p>
