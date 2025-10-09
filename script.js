@@ -328,3 +328,5 @@ document.addEventListener("DOMContentLoaded", () => {
     preloadAdjacentSlides(0)
   }
 })
+
+console.log("success ");
