@@ -1,0 +1,1189 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  /* Updated body text color to charcoal from provided palette */
+  color: #2c2c2c;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  /* Updated section title color to midnight blue */
+  color: #1a3a3a;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  /* Updated subtitle color to graphite */
+  color: #5a5a5a;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-book {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  /* Updated primary button to use #D6B981 color */
+  background: #d6b981;
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  /* Updated hover shadow to match #D6B981 */
+  box-shadow: 0 8px 25px rgba(214, 185, 129, 0.4);
+  background: #c9a961;
+}
+
+.btn-secondary {
+  background: transparent;
+  /* Updated secondary button border to #D6B981 */
+  color: #d6b981;
+  border: 2px solid #d6b981;
+}
+
+.btn-secondary:hover {
+  /* Updated secondary button hover to #D6B981 */
+  background: #d6b981;
+  color: white;
+}
+
+.btn-book {
+  /* Updated book button background to #D6B981 */
+  background: #d6b981;
+  color: white;
+  border: none;
+  width: 100%;
+  margin-top: auto;
+  /* Changed from absolute positioning to relative for normal flow */
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: 100%;
+}
+
+.btn-book:hover {
+  background: #c9a961;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(214, 185, 129, 0.4);
+}
+
+/* Added styles for the booking session button to make it prominent and symmetric */
+.btn-book-session {
+  display: inline-block;
+  background: #d6b981;
+  color: white;
+  padding: 15px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(214, 185, 129, 0.3);
+}
+
+.btn-book-session:hover {
+  background: #c9a961;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(214, 185, 129, 0.4);
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* Updated header background to ivory with transparency */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-brand h1 {
+  font-size: 1.8rem;
+  /* Updated brand color to chestnut brown */
+  color: #1a3a3a;
+  margin-bottom: -5px;
+}
+
+.nav-brand span {
+  font-size: 0.9rem;
+  /* Updated brand span color to #D6B981 */
+  color: #d6b981;
+  font-weight: 300;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  /* Updated nav menu text to charcoal */
+  color: #2c2c2c;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  /* Updated nav menu hover to #D6B981 */
+  color: #d6b981;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  /* Updated hamburger color to charcoal */
+  background: #1a3a3a;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 120px);
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Added background image properties for full-screen background */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide.prev {
+  transform: translateX(-100%);
+}
+
+/* Added mobile video background styles */
+.mobile-video-bg {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mobile-video-bg iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 aspect ratio */
+  min-height: 100vh;
+  min-width: 177.77vh; /* 16:9 aspect ratio */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Show video only on mobile devices and tablets */
+@media (max-width: 1024px) {
+  .mobile-video-bg {
+    display: block;
+  }
+
+  /* Hide background images on ALL slides for mobile and tablet */
+  .hero-slider .slide {
+    background-image: none !important;
+  }
+
+  /* Ensure slides 2 and 3 also have no background */
+  .hero-slider .slide[data-bg] {
+    background-image: none !important;
+  }
+
+  /* Hide upgrade icon on mobile/tablet to prevent "Hot Hot" duplication */
+  .upgrade-icon {
+    display: none;
+  }
+
+  /* Hide slides 2 and 3 on mobile/tablet */
+  .hero-slider .slide:not(:first-child) {
+    display: none !important;
+  }
+
+  /* Hide slider navigation arrows on mobile/tablet */
+  .slider-nav {
+    display: none !important;
+  }
+
+  /* Hide slider dots on mobile/tablet */
+  .slider-dots {
+    display: none !important;
+  }
+}
+
+/* Added overlay for better text readability over background images */
+.slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  /* Removed flex: 1 and adjusted for centered content over background */
+  max-width: 600px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  color: white;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  /* Changed text color to white for visibility over background images */
+  color: white;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: fadeInUp 1s ease-out 0.3s both;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  /* Updated hero subtitle to #D6B981 */
+  color: #d6b981;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  animation: fadeInUp 1s ease-out 0.5s both;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  /* Updated hero description to linen */
+  color: #f5f5f0;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  animation: fadeInUp 1s ease-out 0.7s both;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+/* Removed hero-image styles since we're using background images now */
+
+/* Slider Navigation Arrows */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.prev-btn,
+.next-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+  /* Updated slider button hover to #D6B981 */
+  background: rgba(214, 185, 129, 0.9);
+  border-color: rgba(214, 185, 129, 1);
+  transform: scale(1.1);
+}
+
+.prev-btn:active,
+.next-btn:active {
+  transform: scale(0.95);
+}
+
+/* Slider Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: white;
+  border-color: white;
+}
+
+.dot:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Services Section */
+.services {
+  padding: 80px 0 120px 0; /* Increased bottom padding from 80px to 120px for more spacing */
+  /* Updated services background to sand white */
+  background: #fafaf7;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Added flexbox layout to align buttons at bottom */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  /* Increased min-height from 450px to 750px to accommodate all content on desktop */
+  min-height: 750px;
+  /* Increased padding-bottom from 180px to 200px for more space */
+  padding-bottom: 200px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  /* Updated service card heading to midnight blue */
+  color: #1a3a3a;
+  margin-bottom: 1rem;
+}
+
+.service-card p {
+  /* Updated service card text to graphite */
+  color: #5a5a5a;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Added styles for service images */
+.service-image {
+  width: calc(100% + 4rem);
+  margin: -2rem -2rem 2rem -2rem;
+  /* Increased height from 250px to 320px to make images larger */
+  height: 320px;
+  border-radius: 15px 15px 0 0;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+  transform: scale(1.05);
+}
+
+/* Added timing info styles for cupping therapy section */
+.timing-info {
+  background: #fafaf7;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.timing-info p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #5a5a5a;
+}
+
+.timing-info strong {
+  color: #1a3a3a;
+}
+
+/* Updated pricing section styles for better layout */
+.pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* Reduced margin-bottom to 1.5rem since upgrade box is now in normal flow below pricing */
+  margin-bottom: 1.5rem;
+}
+
+/* Added explicit spacing and display properties to prevent text concatenation */
+.price-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  /* Increased gap to 4rem for more spacing between duration and price */
+  gap: 4rem;
+  transition: all 0.3s ease;
+}
+
+.duration {
+  font-weight: 500;
+  color: #1a3a3a;
+  font-size: 1rem;
+  /* Added display inline-block and explicit margin for spacing */
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.price {
+  font-weight: 600;
+  color: #d6b981;
+  font-size: 1.2rem;
+  /* Added display inline-block and margin-left auto to push to right */
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* Signature Massage Techniques Section Styles */
+.signature-techniques {
+  padding: 80px 0;
+  background: white;
+}
+
+.techniques-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.technique-card {
+  text-align: center;
+  /* Updated technique card background to sand white */
+  background: #fafaf7;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  /* Updated technique card border to #D6B981 */
+  border: 1px solid rgba(214, 185, 129, 0.2);
+}
+
+.technique-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  background: white;
+}
+
+.technique-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  filter: grayscale(20%);
+  transition: filter 0.3s ease;
+}
+
+.technique-card:hover .technique-icon {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.technique-card h3 {
+  font-size: 1.4rem;
+  /* Updated technique card heading to midnight blue */
+  color: #1a3a3a;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.technique-card p {
+  /* Updated technique card text to graphite */
+  color: #5a5a5a;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Added upgrade box styles for better positioning and mobile responsiveness */
+.upgrade-box {
+  background: #fafaf7;
+  border: 1px solid #d6b981;
+  border-radius: 8px;
+  padding: 1rem;
+  /* Changed from absolute positioning to relative, removed bottom/left/right positioning */
+  /* This places the upgrade box in normal document flow BELOW the pricing section */
+  margin-bottom: 1.5rem;
+  position: relative;
+  width: 100%;
+  min-height: 60px;
+}
+
+/* Added styles for upgrade content layout */
+.upgrade-content {
+  display: flex;
+  align-items: center;
+  /* Increased gap to 2rem for better spacing between elements */
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.upgrade-icon {
+  background: #d6b981;
+  color: white;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.upgrade-text {
+  flex: 1;
+  font-weight: 500;
+  color: #1a3a3a;
+  min-width: 150px;
+  /* Added display inline-block and explicit margins for spacing */
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.upgrade-price {
+  color: #d6b981;
+  font-weight: 600;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  /* Added display inline-block and margin-left auto to push to right */
+  display: inline-block;
+  margin-left: auto;
+}
+
+/* Added styles for placeholder upgrade boxes to maintain layout */
+.upgrade-box-placeholder {
+  visibility: hidden;
+  border: none;
+  background: transparent;
+}
+
+/* About Section */
+.about {
+  padding: 80px 0;
+  /* Updated about section background to sand white */
+  background: #fafaf7;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  /* Updated about heading to midnight blue */
+  color: #1a3a3a;
+  margin-bottom: 2rem;
+}
+
+.about-text p {
+  /* Updated about text to graphite */
+  color: #5a5a5a;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  /* Updated stat number to #D6B981 */
+  color: #d6b981;
+  font-family: "Playfair Display", serif;
+}
+
+.stat-label {
+  /* Updated stat label to graphite */
+  color: #5a5a5a;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Products Section */
+.products {
+  padding: 80px 0;
+  /* Updated products background to sand white */
+  background: #fafaf7;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 1.3rem;
+  /* Updated product card heading to midnight blue */
+  color: #1a3a3a;
+  margin: 1.5rem 0 1rem;
+  padding: 0 1.5rem;
+}
+
+.product-card p {
+  /* Updated product card text to graphite */
+  color: #5a5a5a;
+  padding: 0 1.5rem 2rem;
+  line-height: 1.6;
+}
+
+/* Contact Section */
+.contact {
+  padding: 80px 0;
+  /* Updated contact background to sand white */
+  background: #fafaf7;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  /* Updated contact heading to midnight blue */
+  color: #1a3a3a;
+  margin-bottom: 1rem;
+}
+
+.contact-info > p {
+  /* Updated contact text to graphite */
+  color: #5a5a5a;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.contact-item h4 {
+  /* Updated contact item heading to #D6B981 */
+  color: #d6b981;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.contact-item p {
+  /* Updated contact item text to graphite */
+  color: #5a5a5a;
+  margin-bottom: 0.5rem;
+}
+
+.booking-form {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form h3 {
+  font-size: 1.8rem;
+  /* Updated booking form heading to midnight blue */
+  color: #1a3a3a;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus {
+  outline: none;
+  /* Updated form focus border to #D6B981 */
+  border-color: #d6b981;
+}
+
+.booking-form button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Footer */
+.footer {
+  /* Updated footer background to goldenrod */
+  background: #1a3a3a;
+  /* Changed text color to white for contrast */
+  color: white;
+  padding: 2rem 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand h3 {
+  /* Updated brand color to white for visibility on golden background */
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p,
+.footer-tagline p {
+  /* Updated text color to white for better contrast on golden background */
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 80px);
+    background: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    transition: left 0.3s ease;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-image {
+    height: 280px;
+  }
+
+  .upgrade-box {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    bottom: 5.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    width: calc(100% - 3rem);
+    min-height: 70px;
+  }
+
+  .upgrade-content {
+    gap: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .upgrade-text {
+    font-size: 0.95rem;
+    min-width: auto;
+    flex: 1;
+    margin-right: 0.5rem;
+  }
+
+  .upgrade-price {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .service-card:has(.upgrade-box) {
+    padding-bottom: 180px;
+  }
+
+  .service-card:not(:has(.upgrade-box)) {
+    padding-bottom: 90px;
+  }
+
+  .techniques-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .technique-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .technique-icon {
+    font-size: 2.5rem;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-stats {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 20px;
+  }
+
+  .slider-nav {
+    padding: 0 10px;
+  }
+
+  .prev-btn,
+  .next-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .pricing {
+    gap: 1rem;
+  }
+
+  .price-option {
+    padding: 0.875rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .booking-form {
+    padding: 1.5rem;
+  }
+
+  .about-stats {
+    flex-direction: column;
+  }
+
+  .service-image {
+    height: 220px;
+  }
+
+  .upgrade-box {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    bottom: 5rem;
+    left: 1rem;
+    right: 1rem;
+    width: calc(100% - 2rem);
+    min-height: 75px;
+  }
+
+  .upgrade-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .upgrade-icon {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  .upgrade-text {
+    font-size: 1rem;
+    min-width: auto;
+    width: 100%;
+    line-height: 1.5;
+  }
+
+  .upgrade-price {
+    font-size: 1rem;
+    align-self: flex-end;
+    margin-left: 0;
+  }
+
+  .service-card:has(.upgrade-box) {
+    padding-bottom: 200px;
+  }
+
+  .service-card:not(:has(.upgrade-box)) {
+    padding-bottom: 100px;
+  }
+
+  .price-option {
+    padding: 0.75rem 1rem;
+    flex-direction: row;
+  }
+
+  .duration {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .technique-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .technique-icon {
+    font-size: 2rem;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .slide {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+    padding: 20px;
+  }
+
+  .slider-nav {
+    padding: 0 10px;
+  }
+
+  .prev-btn,
+  .next-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .upgrade-box {
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    bottom: 4.5rem;
+    min-height: 80px;
+  }
+
+  .upgrade-content {
+    gap: 0.75rem;
+  }
+
+  .upgrade-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .upgrade-price {
+    font-size: 0.95rem;
+  }
+
+  .service-card:has(.upgrade-box) {
+    padding-bottom: 220px;
+  }
+}
