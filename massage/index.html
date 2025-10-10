@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalma & Co Spa Resort - Authentic Swedish Massage Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Removed base tag to prevent unexpected URL resolution on GitHub Pages -->
+    <!-- Optimized font loading with display=swap and preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Only preload the first hero image that's visible -->
+    <link rel="preload" as="image" href="./images/spa-candles-woman.jpg">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>Kalma & Co</h1>
+                <span>Spa Resort</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#booking" class="btn-primary">Book Now</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <!-- Added loading optimization for hero slides -->
+            <div class="slide active" style="background-image: url('./images/spa-candles-woman.jpg');">
+                <!-- Added YouTube Shorts video background for mobile -->
+                <div class="mobile-video-bg">
+                    <iframe 
+                        src="https://www.youtube.com/embed/HSAAcaJ3958?autoplay=1&mute=1&loop=1&playlist=HSAAcaJ3958&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen
+                        title="Spa Experience Video">
+                    </iframe>
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2 class="hero-title">Authentic Swedish Massage Experience</h2>
+                    <p class="hero-subtitle">Complete Relaxation, Mind & Body Wellness</p>
+                    <p class="hero-description">Let our expert therapists guide you to complete relaxation and wellness in our serene spa setting.</p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn-primary">Book Your Session</a>
+                        <a href="#services" class="btn-secondary">View Services</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lazy load non-active hero slides -->
+            <div class="slide" data-bg="./images/massage-therapy.jpg">
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2 class="hero-title">Deep Tissue & Hot Stone Therapy</h2>
+                    <p class="hero-subtitle">Professional Healing Touch</p>
+                    <p class="hero-description">Experience our signature hot stone massage and deep tissue therapy for ultimate muscle relief and rejuvenation.</p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn-primary">Book Treatment</a>
+                        <a href="#services" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Updated third slide to use new high-quality luxury back massage image -->
+            <div class="slide" data-bg="./images/hot-stone-spa-therapy.jpg">
+                <div class="slide-overlay"></div>
+                <div class="hero-content">
+                    <h2 class="hero-title">Hot Stone Spa Therapy</h2>
+                    <p class="hero-subtitle">Luxurious Heated Stone Treatment</p>
+                    <p class="hero-description">Experience the ultimate relaxation with our signature hot stone therapy in a serene candlelit atmosphere designed for complete tranquility.</p>
+                    <div class="hero-buttons">
+                        <a href="#booking" class="btn-primary">Book Treatment</a>
+                        <a href="#services" class="btn-secondary">View Services</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Navigation -->
+            <div class="slider-nav">
+                <button class="prev-btn" aria-label="Previous slide">‹</button>
+                <button class="next-btn" aria-label="Next slide">›</button>
+            </div>
+            
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <button class="dot active" data-slide="0"></button>
+                <button class="dot" data-slide="1"></button>
+                <!-- Added third navigation dot -->
+                <button class="dot" data-slide="2"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Signature Services</h2>
+            <p class="section-subtitle">Discover our range of therapeutic treatments designed to restore balance and promote deep relaxation</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <!-- Added image for Swedish Massage service -->
+                    <div class="service-image">
+                        <img src="./images/massage-therapy.jpg" alt="Swedish Massage and Deep Tissue" loading="lazy">
+                    </div>
+                    <h3>Swedish Massage + Deep Tissue</h3>
+                    <p>Traditional long, flowing strokes combined with targeted deep tissue work to improve circulation, reduce muscle tension, and release chronic knots.</p>
+                    <div class="pricing">
+                        <div class="price-option">
+                            <span class="duration">45 minutes</span>
+                            <span class="price">$80</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">60 minutes</span>
+                            <span class="price">$120</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">90 minutes</span>
+                            <span class="price">$170</span>
+                        </div>
+                    </div>
+                    <!-- Added empty upgrade box placeholder for alignment -->
+                    <div class="upgrade-box upgrade-box-placeholder"></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+
+                <div class="service-card">
+                    <!-- Added image for Hot Stone Massage service -->
+                    <div class="service-image">
+                        <img src="./images/hot-stone-spa-therapy.jpg" alt="Hot Stone Massage" loading="lazy">
+                    </div>
+                    <h3>Hot Stone Massage</h3>
+                    <p>Heated volcanic stones combined with Swedish massage techniques to melt away tension and promote deep muscle relaxation and improved circulation.</p>
+                    <div class="pricing">
+                        <div class="price-option">
+                            <span class="duration">45 minutes</span>
+                            <span class="price">$95</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">60 minutes</span>
+                            <span class="price">$135</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">90 minutes</span>
+                            <span class="price">$185</span>
+                        </div>
+                    </div>
+                    <div class="upgrade-box">
+                        <div class="upgrade-content">
+                            <span class="upgrade-icon">Hot</span>
+                            <span class="upgrade-text">Hot Stones Upgrade</span>
+                            <span class="upgrade-price">+$15 USD</span>
+                        </div>
+                    </div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+
+                <div class="service-card">
+                    <!-- Updated image for Cupping Therapy service -->
+                    <div class="service-image">
+                        <img src="./images/cupping-therapy-treatment.jpg" alt="Cupping Therapy and Massage" loading="lazy">
+                    </div>
+                    <h3>Cupping Therapy + Massage</h3>
+                    <p>Ancient healing technique using suction cups on one zone of your choice, combined with therapeutic massage for the remaining session.</p>
+                    <div class="timing-info">
+                        <p><strong>Session Breakdown:</strong> 20 minutes Cupping Therapy + remaining time Massage</p>
+                    </div>
+                    <div class="pricing">
+                        <div class="price-option">
+                            <span class="duration">60 minutes</span>
+                            <span class="price">$180</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">90 minutes</span>
+                            <span class="price">$230</span>
+                        </div>
+                    </div>
+                    <div class="upgrade-box">
+                        <div class="upgrade-content">
+                            <span class="upgrade-icon">Full Body</span>
+                            <span class="upgrade-text">Whole Body Massage</span>
+                            <span class="upgrade-price">Additional Cost</span>
+                        </div>
+                    </div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+
+                <div class="service-card">
+                    <!-- Updated image for Weight Loss service to show relaxing spa massage -->
+                    <div class="service-image">
+                        <img src="./images/relaxing-spa-massage.jpg" alt="Weight Loss and Massage" loading="lazy">
+                    </div>
+                    <h3>Weight Loss + Massage</h3>
+                    <p>Detoxifying treatment combined with therapeutic massage to boost metabolism, improve circulation, and promote natural weight loss.</p>
+                    <div class="pricing">
+                        <div class="price-option">
+                            <span class="duration">60 minutes</span>
+                            <span class="price">$200</span>
+                        </div>
+                        <div class="price-option">
+                            <span class="duration">90 minutes</span>
+                            <span class="price">$260</span>
+                        </div>
+                    </div>
+                    <!-- Added empty upgrade box placeholder for alignment -->
+                    <div class="upgrade-box upgrade-box-placeholder"></div>
+                    <button class="btn-book">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Massage Techniques Section -->
+    <section class="signature-techniques">
+        <div class="container">
+            <h2 class="section-title">Signature Massage Techniques</h2>
+            <p class="section-subtitle">Discover our specialized therapeutic approaches crafted for ultimate wellness</p>
+            
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-icon">Natural</div>
+                    <h3>Swedish & Hot Stone Fusion</h3>
+                    <p>A harmonious blend of traditional Swedish massage with heated volcanic stones, creating the perfect balance of gentle relaxation and deep therapeutic warmth.</p>
+                </div>
+                
+                <div class="technique-card">
+                    <div class="technique-icon">Strength</div>
+                    <h3>Deep Tissue Mastery</h3>
+                    <p>Advanced deep tissue techniques targeting chronic tension and muscle knots, using precise pressure and specialized movements for lasting relief.</p>
+                </div>
+                
+                <div class="technique-card">
+                    <div class="technique-icon">Balance</div>
+                    <h3>Weight Loss Technique</h3>
+                    <p>Specialized massage approach combining lymphatic drainage and metabolic stimulation to support natural detoxification and weight management goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I am a certified massage therapist with one and a half years of experience and a true passion for my craft. Despite my relatively short time in the field, my clients call my hands "golden" — and not without reason.</p>
+                    
+                    <p>I continuously improve my skills through additional training and exploring new approaches to bodywork and recovery. My primary technique combines classic Swedish massage with gentle deep tissue work, aimed at muscle relaxation and stretching.</p>
+                    
+                    <p>I intuitively sense tension in a client's body and work delicately yet deeply to release tightness, improve circulation, and restore mobility. Clients come to me for a sense of lightness, inner calm, and physical comfort — and they return because they feel the difference.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="stat-number">1.5</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Golden</span>
+                        <span class="stat-label">Touch</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Natural Products</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Visit Our Spa Resort</h2>
+                    <p>Ready to experience the ultimate in relaxation? Contact us to book your appointment.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Get in Touch</h4>
+                            <p>+1 (424) 293-9062</p>
+                            <!-- Styled booking link as a prominent button -->
+                            <a href="https://book.squareup.com/appointments/zd83hkz4n3obvg/location/LEVC4NT6GXMJ9/services" target="_blank" rel="noopener noreferrer" class="btn-book-session">Book the session</a>
+                            <p>825 S Hill St, Los Angeles, CA 90015</p>
+                            <p>Mon-Sun: 9:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="booking" class="booking-form">
+                    <h3>Book Your Session</h3>
+                    <form id="appointmentForm">
+                        <input type="text" placeholder="Enter your full name" required>
+                        <input type="email" placeholder="Enter your email" required>
+                        <input type="tel" placeholder="Enter your phone number" required>
+                        <select required>
+                            <option value="">Choose a service</option>
+                            <option value="swedish-deep">Swedish Massage + Deep Tissue</option>
+                            <option value="hot-stone">Hot Stone Massage</option>
+                            <option value="cupping-massage">Cupping Therapy + Massage</option>
+                            <option value="weight-loss-massage">Weight Loss + Massage</option>
+                        </select>
+                        <button type="submit" class="btn-primary">Request Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Kalma & Co Spa Resort</h3>
+                    <p>© 2025 Kalma & Co Spa Resort. All rights reserved.</p>
+                </div>
+                <div class="footer-tagline">
+                    <p>Crafted with care for your wellness journey</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
