@@ -729,23 +729,38 @@ h4 {
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Increased gap from 0.5rem to 1.5rem for better spacing between number and label */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .stat-number {
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  /* Updated stat number to #D6B981 */
   color: #d6b981;
   font-family: "Playfair Display", serif;
+  line-height: 1.2;
+  /* Increased margin-bottom from 0.5rem to 1rem and added padding-bottom for extra spacing */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.stat-number::after {
+  content: "\A";
+  white-space: pre;
 }
 
 .stat-label {
-  /* Updated stat label to graphite */
   color: #5a5a5a;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: block;
+  line-height: 1.4;
+  /* Added margin-top for additional separation from stat-number */
+  margin-top: 0.5rem;
 }
 
 /* Products Section */
@@ -808,6 +823,10 @@ h4 {
   gap: 4rem;
 }
 
+.contact-info {
+  text-align: center;
+}
+
 .contact-info h2 {
   font-size: 2.5rem;
   /* Updated contact heading to midnight blue */
@@ -820,6 +839,10 @@ h4 {
   color: #5a5a5a;
   margin-bottom: 2rem;
   font-size: 1.1rem;
+}
+
+.contact-details {
+  text-align: center;
 }
 
 .contact-item h4 {
@@ -1018,9 +1041,34 @@ h4 {
     gap: 2rem;
   }
 
+  /* Changed about-stats to column layout on tablet for better readability */
   .about-stats {
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Added max-width to prevent stats from being too wide */
+    max-width: 100%;
+  }
+
+  /* Ensured stat boxes have proper spacing and layout on mobile */
+  .stat {
+    padding: 1.5rem;
+    min-height: auto;
+    width: 100%;
+    /* Maintained increased gap on mobile for consistent spacing */
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    /* Maintained increased margin-bottom on mobile */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    /* Maintained margin-top on mobile */
+    margin-top: 0.5rem;
   }
 
   .contact-content {
@@ -1074,83 +1122,30 @@ h4 {
     padding: 1.5rem;
   }
 
+  /* Maintained column layout for stats on small mobile */
   .about-stats {
     flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .service-image {
-    height: 220px;
+  /* Adjusted stat box sizing for small screens */
+  .stat {
+    padding: 1.25rem;
+    /* Maintained increased gap on small mobile */
+    gap: 1.5rem;
   }
 
-  /* Improved mobile layout for upgrade box with better spacing */
-  .upgrade-box {
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    /* Keep in normal flow */
-    position: relative;
-    width: 100%;
-    min-height: auto;
+  .stat-number {
+    font-size: 1.75rem;
+    /* Maintained spacing on small mobile */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
-  .upgrade-content {
-    /* Stack elements vertically on small screens for better readability */
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .upgrade-icon {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.75rem;
-    display: inline-block;
-  }
-
-  .upgrade-text {
-    font-size: 0.95rem;
-    min-width: auto;
-    width: 100%;
-    line-height: 1.5;
-    /* Reset margins for vertical layout */
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .upgrade-price {
-    font-size: 1rem;
-    align-self: flex-end;
-    margin-left: 0;
-  }
-
-  /* Reset service card padding for normal flow */
-  .service-card {
-    padding-bottom: 2rem;
-    min-height: auto;
-  }
-
-  .price-option {
-    padding: 0.75rem 1rem;
-    flex-direction: row;
-  }
-
-  .duration {
-    font-size: 0.9rem;
-  }
-
-  .price {
-    font-size: 1rem;
-  }
-
-  .technique-card {
-    padding: 1.5rem 1rem;
-  }
-
-  .technique-icon {
-    font-size: 2rem;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .stat-label {
+    font-size: 0.8rem;
+    /* Maintained margin-top on small mobile */
+    margin-top: 0.5rem;
   }
 
   .footer-content {
