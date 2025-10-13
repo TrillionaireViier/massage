@@ -668,6 +668,7 @@ h4 {
   /* Added display inline-block and explicit margins for spacing */
   display: inline-block;
   margin-right: 1rem;
+  margin-left: 0;
 }
 
 .upgrade-price {
@@ -728,23 +729,38 @@ h4 {
   background: white;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  /* Increased gap from 0.5rem to 1.5rem for better spacing between number and label */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .stat-number {
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  /* Updated stat number to #D6B981 */
   color: #d6b981;
   font-family: "Playfair Display", serif;
+  line-height: 1.2;
+  /* Increased margin-bottom from 0.5rem to 1rem and added padding-bottom for extra spacing */
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.stat-number::after {
+  content: "\A";
+  white-space: pre;
 }
 
 .stat-label {
-  /* Updated stat label to graphite */
   color: #5a5a5a;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  display: block;
+  line-height: 1.4;
+  /* Added margin-top for additional separation from stat-number */
+  margin-top: 0.5rem;
 }
 
 /* Products Section */
@@ -807,6 +823,10 @@ h4 {
   gap: 4rem;
 }
 
+.contact-info {
+  text-align: center;
+}
+
 .contact-info h2 {
   font-size: 2.5rem;
   /* Updated contact heading to midnight blue */
@@ -819,6 +839,10 @@ h4 {
   color: #5a5a5a;
   margin-bottom: 2rem;
   font-size: 1.1rem;
+}
+
+.contact-details {
+  text-align: center;
 }
 
 .contact-item h4 {
@@ -949,42 +973,54 @@ h4 {
     height: 280px;
   }
 
+  /* Fixed upgrade box to use normal flow instead of absolute positioning */
   .upgrade-box {
     padding: 1rem;
     margin-bottom: 1.5rem;
-    bottom: 5.5rem;
-    left: 1.5rem;
-    right: 1.5rem;
-    width: calc(100% - 3rem);
-    min-height: 70px;
+    /* Removed absolute positioning - now in normal document flow */
+    position: relative;
+    width: 100%;
+    min-height: auto;
   }
 
   .upgrade-content {
-    gap: 0.5rem;
+    /* Increased gap for better spacing between elements */
+    gap: 1rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .upgrade-icon {
+    /* Ensure icon is visible and properly sized on mobile */
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+    flex-shrink: 0;
   }
 
   .upgrade-text {
     font-size: 0.95rem;
     min-width: auto;
-    flex: 1;
-    margin-right: 0.5rem;
+    flex: 1 1 auto;
+    /* Added explicit spacing */
+    margin-right: 1rem;
+    margin-left: 0;
   }
 
   .upgrade-price {
     font-size: 1rem;
-    margin-left: 0.5rem;
+    margin-left: auto;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
-  .service-card:has(.upgrade-box) {
-    padding-bottom: 180px;
-  }
-
-  .service-card:not(:has(.upgrade-box)) {
-    padding-bottom: 90px;
+  /* Adjusted service card padding for normal flow layout */
+  .service-card {
+    /* Reset to normal padding since upgrade box is no longer absolutely positioned */
+    padding-bottom: 2rem;
+    min-height: auto;
   }
 
   .techniques-grid {
@@ -1005,9 +1041,34 @@ h4 {
     gap: 2rem;
   }
 
+  /* Changed about-stats to column layout on tablet for better readability */
   .about-stats {
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 1.5rem;
+    /* Added max-width to prevent stats from being too wide */
+    max-width: 100%;
+  }
+
+  /* Ensured stat boxes have proper spacing and layout on mobile */
+  .stat {
+    padding: 1.5rem;
+    min-height: auto;
+    width: 100%;
+    /* Maintained increased gap on mobile for consistent spacing */
+    gap: 1.5rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    /* Maintained increased margin-bottom on mobile */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    /* Maintained margin-top on mobile */
+    margin-top: 0.5rem;
   }
 
   .contact-content {
@@ -1061,80 +1122,30 @@ h4 {
     padding: 1.5rem;
   }
 
+  /* Maintained column layout for stats on small mobile */
   .about-stats {
     flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .service-image {
-    height: 220px;
+  /* Adjusted stat box sizing for small screens */
+  .stat {
+    padding: 1.25rem;
+    /* Maintained increased gap on small mobile */
+    gap: 1.5rem;
   }
 
-  .upgrade-box {
-    padding: 1rem;
-    margin-bottom: 2rem;
-    bottom: 5rem;
-    left: 1rem;
-    right: 1rem;
-    width: calc(100% - 2rem);
-    min-height: 75px;
+  .stat-number {
+    font-size: 1.75rem;
+    /* Maintained spacing on small mobile */
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
   }
 
-  .upgrade-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .upgrade-icon {
-    font-size: 0.85rem;
-    padding: 0.3rem 0.75rem;
-  }
-
-  .upgrade-text {
-    font-size: 1rem;
-    min-width: auto;
-    width: 100%;
-    line-height: 1.5;
-  }
-
-  .upgrade-price {
-    font-size: 1rem;
-    align-self: flex-end;
-    margin-left: 0;
-  }
-
-  .service-card:has(.upgrade-box) {
-    padding-bottom: 200px;
-  }
-
-  .service-card:not(:has(.upgrade-box)) {
-    padding-bottom: 100px;
-  }
-
-  .price-option {
-    padding: 0.75rem 1rem;
-    flex-direction: row;
-  }
-
-  .duration {
-    font-size: 0.9rem;
-  }
-
-  .price {
-    font-size: 1rem;
-  }
-
-  .technique-card {
-    padding: 1.5rem 1rem;
-  }
-
-  .technique-icon {
-    font-size: 2rem;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .stat-label {
+    font-size: 0.8rem;
+    /* Maintained margin-top on small mobile */
+    margin-top: 0.5rem;
   }
 
   .footer-content {
@@ -1163,15 +1174,17 @@ h4 {
 }
 
 @media (max-width: 360px) {
+  /* Optimized for very small screens with proper spacing */
   .upgrade-box {
-    padding: 1rem;
-    margin-bottom: 2.5rem;
-    bottom: 4.5rem;
-    min-height: 80px;
+    padding: 0.875rem;
+    margin-bottom: 1.5rem;
+    min-height: auto;
   }
 
   .upgrade-content {
     gap: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .upgrade-text {
@@ -1183,7 +1196,9 @@ h4 {
     font-size: 0.95rem;
   }
 
-  .service-card:has(.upgrade-box) {
-    padding-bottom: 220px;
+  /* Consistent padding for all service cards */
+  .service-card {
+    padding-bottom: 2rem;
+    min-height: auto;
   }
 }
