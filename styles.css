@@ -207,38 +207,58 @@ h4 {
   min-height: 100vh;
   padding-top: 120px;
   overflow: hidden;
+  /* Make hero section span full viewport width */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  /* Add prominent beige/gold borders at top and bottom */
+  border-top: 12px solid #d6b981;
+  border-bottom: 12px solid #d6b981;
+  background-color: transparent;
 }
 
 .hero-slider {
   position: relative;
-  width: 100%;
+  /* Ensure slider spans full viewport width */
+  width: 100vw;
   height: calc(100vh - 120px);
+  margin: 0;
+  padding: 0;
+  /* Changed from flexbox to block for traditional slider */
+  display: block;
 }
 
 .slide {
+  /* Changed to absolute positioning for traditional slider behavior */
   position: absolute;
   top: 0;
   left: 0;
+  /* Each slide takes full width */
   width: 100%;
   height: 100%;
-  /* Added background image properties for full-screen background */
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  /* Add opacity and transform transitions for slider effect */
   opacity: 0;
   transform: translateX(100%);
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Active slide is visible and centered */
 .slide.active {
   opacity: 1;
   transform: translateX(0);
 }
 
+/* Previous slide moves to the left */
 .slide.prev {
   transform: translateX(-100%);
 }
@@ -267,39 +287,125 @@ h4 {
   pointer-events: none;
 }
 
-/* Show video only on mobile devices and tablets */
-@media (max-width: 1024px) {
+/* Show video ONLY on mobile devices (below 768px), hide on tablet and desktop */
+@media (max-width: 767px) {
   .mobile-video-bg {
     display: block;
   }
 
-  /* Hide background images on ALL slides for mobile and tablet */
-  .hero-slider .slide {
+  /* Change slider back to single-column on mobile */
+  .hero-slider {
+    display: block;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    min-width: 100%;
+    flex: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .slide.prev {
+    transform: translateX(-100%);
+  }
+
+  /* Hide background images on first slide for mobile only */
+  .hero-slider .slide:first-child {
     background-image: none !important;
   }
 
-  /* Ensure slides 2 and 3 also have no background */
-  .hero-slider .slide[data-bg] {
-    background-image: none !important;
-  }
-
-  /* Hide upgrade icon on mobile/tablet to prevent "Hot Hot" duplication */
-  .upgrade-icon {
-    display: none;
-  }
-
-  /* Hide slides 2 and 3 on mobile/tablet */
+  /* Hide slides 2 and 3 on mobile */
   .hero-slider .slide:not(:first-child) {
     display: none !important;
   }
 
-  /* Hide slider navigation arrows on mobile/tablet */
-  .slider-nav {
+  /* Hide slider dots on mobile */
+  .slider-dots {
     display: none !important;
   }
+}
 
-  /* Hide slider dots on mobile/tablet */
+/* Show navigation arrows on desktop/tablet for slider functionality */
+@media (min-width: 768px) {
+  .slider-nav {
+    display: flex !important;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .prev-btn,
+  .next-btn {
+    pointer-events: all;
+    background: rgba(214, 185, 129, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .prev-btn:hover,
+  .next-btn:hover {
+    background: rgba(214, 185, 129, 1);
+    transform: scale(1.1);
+  }
+
+  /* Show slider dots on desktop/tablet */
   .slider-dots {
+    display: flex !important;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 10px;
+    z-index: 3;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .dot.active {
+    background: #d6b981;
+    width: 30px;
+    border-radius: 6px;
+  }
+
+  .dot:hover {
+    background: rgba(214, 185, 129, 0.8);
+  }
+
+  /* Ensure video is hidden on desktop/tablet */
+  .mobile-video-bg {
     display: none !important;
   }
 }
@@ -377,38 +483,8 @@ h4 {
   padding: 0 20px;
   z-index: 3;
   pointer-events: none;
-}
-
-.prev-btn,
-.next-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  pointer-events: auto;
-}
-
-.prev-btn:hover,
-.next-btn:hover {
-  /* Updated slider button hover to #D6B981 */
-  background: rgba(214, 185, 129, 0.9);
-  border-color: rgba(214, 185, 129, 1);
-  transform: scale(1.1);
-}
-
-.prev-btn:active,
-.next-btn:active {
-  transform: scale(0.95);
+  /* Hide arrows on all screen sizes */
+  display: none !important;
 }
 
 /* Slider Dots */
@@ -420,26 +496,6 @@ h4 {
   display: flex;
   gap: 10px;
   z-index: 3;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.dot.active {
-  background: white;
-  border-color: white;
-}
-
-.dot:hover {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Services Section */
@@ -1059,8 +1115,8 @@ h4 {
   }
 
   .stat-number {
-    font-size: 2rem;
-    /* Maintained increased margin-bottom on mobile */
+    font-size: 1.75rem;
+    /* Maintained spacing on mobile */
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
   }
