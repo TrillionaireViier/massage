@@ -178,8 +178,8 @@ const slides = document.querySelectorAll(".slide")
 const dots = document.querySelectorAll(".dot")
 const totalSlides = slides.length
 
-function isMobileOrTablet() {
-  return window.innerWidth <= 1024
+function isMobile() {
+  return window.innerWidth < 768
 }
 
 function loadSlideBackground(slide) {
@@ -198,7 +198,7 @@ function preloadAdjacentSlides(currentIndex) {
 }
 
 function showSlide(index) {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
 
@@ -234,7 +234,7 @@ function showSlide(index) {
 }
 
 function nextSlide() {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
   const next = (currentSlide + 1) % totalSlides
@@ -242,7 +242,7 @@ function nextSlide() {
 }
 
 function prevSlide() {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
   const prev = (currentSlide - 1 + totalSlides) % totalSlides
@@ -259,27 +259,27 @@ dots.forEach((dot, index) => {
 })
 
 let autoPlayInterval
-if (!isMobileOrTablet()) {
+if (!isMobile()) {
   autoPlayInterval = setInterval(nextSlide, 5000)
 }
 
 // Pause auto-play on hover
 const heroSlider = document.querySelector(".hero-slider")
 heroSlider.addEventListener("mouseenter", () => {
-  if (!isMobileOrTablet()) {
+  if (!isMobile()) {
     clearInterval(autoPlayInterval)
   }
 })
 
 heroSlider.addEventListener("mouseleave", () => {
-  if (!isMobileOrTablet()) {
+  if (!isMobile()) {
     autoPlayInterval = setInterval(nextSlide, 5000)
   }
 })
 
 // Keyboard navigation
 document.addEventListener("keydown", (e) => {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
   if (e.key === "ArrowLeft") {
@@ -293,14 +293,14 @@ let touchStartX = 0
 let touchEndX = 0
 
 heroSlider.addEventListener("touchstart", (e) => {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
   touchStartX = e.changedTouches[0].screenX
 })
 
 heroSlider.addEventListener("touchend", (e) => {
-  if (isMobileOrTablet()) {
+  if (isMobile()) {
     return
   }
   touchEndX = e.changedTouches[0].screenX
@@ -321,12 +321,10 @@ function handleSwipe() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (!isMobileOrTablet()) {
+  if (!isMobile()) {
     // Load the first slide background immediately
     loadSlideBackground(slides[0])
     // Preload adjacent slides
     preloadAdjacentSlides(0)
   }
 })
-
-console.log("success ");
