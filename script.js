@@ -328,3 +328,40 @@ document.addEventListener("DOMContentLoaded", () => {
     preloadAdjacentSlides(0)
   }
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('appointmentForm');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    // Собираем данные из формы
+    const data = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
+      service: document.getElementById('service').value,
+      date: new Date().toISOString() // для удобства в таблице
+    };
+
+    try {
+      const response = await fetch('https://c3xx16hu3fvp7qt539ons1baq6gtk4la.hook.eu2.make.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        alert('✅ Thank you! Your appointment request has been sent successfully.');
+        form.reset();
+      } else {
+        alert('⚠️ Error sending data. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Webhook error:', error);
+      alert('❌ Connection error. Please check your internet or contact support.');
+    }
+  });
+});
